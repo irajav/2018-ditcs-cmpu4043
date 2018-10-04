@@ -1,0 +1,40 @@
+.calc{
+	border-radius: 10px;
+	background-color: #F0EEEE;
+	width: 350px;
+	height: 300px;
+    border: 2px solid black;
+    position: relative;
+}
+
+div 
+{
+  display: inline-block;
+  text-align: center;
+}
+input
+{
+  margin-top:10px
+}
+
+
+input[type = "textfield"]
+{
+  font-size: 200%;
+  text-align:right;
+  border-radius:5px;
+  margin-bottom:10px;
+  width:310px;
+  height:50px
+
+}
+
+input[type = "button"]
+{
+  font-size: 100%;
+  border-radius: 7px;
+  font-weight: bold;
+  background-color: #A6A4A4;
+  width:75px;
+  height:30px
+}
