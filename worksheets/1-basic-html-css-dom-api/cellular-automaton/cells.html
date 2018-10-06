@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+    <script>
+        var head = document.getElementsByTagName("head")[0];
+        style = document.createElement("style");
+        style.type = "text/css";
+        var box = "div { \
+                    width: 808px; \
+                    height: 600px; \
+                    } \
+                div div { \
+                    height: 8px; \
+                    width: 8px; \
+                    float: left; \
+                    margin: -1px; \
+                    border: 1px solid grey; \
+                }";
+        if (style.styleSheet) {
+            style.styleSheet.cssText = box;
+        }
+        else {
+            style.appendChild(document.createTextNode(box));
+        }
+        head.appendChild(style);
+        var body = document.getElementsByTagName("body")[0];
+        var cellGridContainer = document.createElement("div");
+        cellGridContainer.setAttribute("id", "div");
+        body.appendChild(cellGridContainer);
+        var max = 20;
+        var min = 1;
+        var columnGridSize = 101;
+        var rowGridSize = 50;
+        var cellGrid;       
+
+
+        //patterns that the descendants follow
+        //true represents active and false represents inactive
+        var activeStatePatterns = [
+            [false, false, false, false],
+            [false, false, true, true], 
+            [false, true, false, false],
+            [false, true, true,false],
+            [true, false, false, true],
+            [true, false, true, false],
+            [true, true, false, false],
+            [true,  true, true, true],            
+        ];
+
+
+        function Cell(cellGridContainer) {
+            var isActive = false;
+            var element = document.createElement("div");
+            this.getIsActive = function () {
+                return isActive;
+            }
+            this.setIsActive = function (value) {
+                isActive = value;
+                if (value) {
+                    element.setAttribute("style", "background-color: pink");
+                } else {
+                    element.setAttribute("style", "background-color: black");
+                }
+            }
+            cellGridContainer.appendChild(element);
+        }
+
+        // stores in an array
+        function ancestors(rowIndex, columnIndex) {
+            var cells = new Array(3);
+            var leftIndex = (columnIndex - 1) < 0 ? columnGridSize - 1 : columnIndex - 1; // Wrap around if less than 0
+            var rightIndex = (columnIndex + 1) >= columnGridSize ? 0 : columnIndex + 1; // Wrap around if greater than grid size
+            var topIndex = rowIndex - 1;
+            var leftCell = cellGrid[topIndex][leftIndex];
+            var topCell = cellGrid[topIndex][columnIndex];
+            var rightCell = cellGrid[topIndex][rightIndex];
+            cells[0] = leftCell;
+            cells[1] = topCell;
+            cells[2] = rightCell;
+            return cells;
+        }
+        function ifActive(left, top, right) {            
+            for (var i = 0; i < activeStatePatterns.length; i++) {
+                if (activeStatePatterns[i][0] === left &&
+                    activeStatePatterns[i][1] === top &&
+                    activeStatePatterns[i][2] === right) {
+                    return activeStatePatterns[i][3];
+                }
+            }
+            console.log("invalid pattern");
+            return false;
+        }
+        // this function specifies if the boxes are active or inactive        
+        function randomCells(row, column) {
+            var cell = cellGrid[row][column];
+            var random = Math.random();
+            if (random <= 0.5) {
+                cell.setIsActive(true);
+            } else {
+                cell.setIsActive(false);
+            }
+        }
+        // blank grid
+        function generateBlankGrid() {
+            cellGrid = new Array(rowGridSize);
+            for (var r = 0; r < rowGridSize; r++) {
+                cellGrid[r] = new Array(columnGridSize);
+                for (var c = 0; c < columnGridSize; c++) {
+                    var cell = new Cell(cellGridContainer);
+                    cellGrid[r][c] = cell;
+                }
+            }
+        }
+        // randomly generates only the first row
+        function generateFirstRow() {
+            // Randomly generate the first row
+            for (var i = 0; i < columnGridSize; i++) {
+                randomCells(0, i);
+            }
+        }
+        // Generate the rest of the cells
+        function generateOtherCells() {
+            for (var r = 1; r < rowGridSize; r++) {
+                for (var c = 0; c < columnGridSize; c++) {
+                    var cells = ancestors(r, c);
+                    var isLeftActive = cells[0].getIsActive();
+                    var isTopActive = cells[1].getIsActive();
+                    var isRightActive = cells[2].getIsActive();
+                    var shouldBeActive = ifActive(isLeftActive, isTopActive, isRightActive);
+                    cellGrid[r][c].setIsActive(shouldBeActive);
+                }
+            }
+        }
+        
+        function populate() {
+            generateBlankGrid();
+            generateFirstRow();
+            generateOtherCells();
+        }
+        (function () {
+            populate();
+        })();
+    </script>
+
+</body>
+</html>
