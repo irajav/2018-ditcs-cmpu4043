@@ -1,0 +1,77 @@
+<!--
+
+    Ira Javier
+    C15362901
+    DT228/4 - Rich Web App Lab 2
+    This is a web app querying user information from Github API
+
+
+-->
+<html>
+<head>
+	<script src = "github_api.js"></script>
+ 	<link rel="stylesheet" href="github_api.css">
+</head>
+    <body>
+        <div class="frame">
+            <div class="row">
+                <input class="username" id="inputUser" placeholder="Username"></input>
+                <button class="search" onclick="look_up_data()"> Search</button>
+            </div>
+
+            <div class="row">
+                <div class="userprofile">User Profile</div>
+                <div class="userrepo"> User Repos</div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <img class="userimg" id="pic" src="https://picsum.photos/180/180/?random">
+                    <div class="userrow">
+                        <span class="usertext" id="name">Name</span>
+                    </div>
+                    <div class="userrow">
+                        <span class="usertext" id="username">Username</span>
+                    </div>
+                    <div class="userrow">
+                        <span class="usertext" id="email">Email</span>
+                    </div>
+                    <div class="userrow">
+                        <span class="usertext" id="location">Location</span>
+                    </div>
+                    <div class="userrow">
+                        <span class="usertext" id="gists">Number of Gists</span>
+                    </div>
+                </div>
+
+                <div id="userrepoframe" class="col userrepoframe">
+
+                        <div class="reporow" id="reporow1">
+                            <span class="usertext" id="name1">Project Name</span>
+                            <span class="usertext" id="desc1">Project Description</span>
+                        </div>
+                        <div class="reporow" id="reporow2">
+                            <span class="usertext" id="name2">Project Name</span>
+                            <span class="usertext" id="desc2">Project Description</span>
+                        </div>
+                        <div class="reporow" id="reporow3">
+                            <span class="usertext" id="name3">Project Name</span>
+                            <span class="userext" id="desc3">Project Description</span>
+                        </div>
+                        <div class="reporow" id="reporow4">
+                            <span class="usertext" id="name4">Project Name</span>
+                            <span class="usertext" id="desc4">Project Description</span>
+                        </div>
+                        <div class="reporow" id="reporow5">
+                            <span class="usertext" id="name5">Project Name</span>
+                            <span class="usertext" id="desc5">Project Description</span>
+                        </div>
+                        <div class="reporow" id="reporow6">
+                            <span class="usertext" id="name6">Project Name</span>
+                            <span class="usertext" id="desc6">Project Description</span>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

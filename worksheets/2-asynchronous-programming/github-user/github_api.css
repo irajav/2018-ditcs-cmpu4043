@@ -1,0 +1,101 @@
+.frame
+{
+    width: 600px;
+    height: auto;
+    border: 2px solid black;
+    padding-bottom: 15px;
+}
+
+.row
+{
+    display: block;
+}
+
+.username
+{
+    height: 30px;
+    width: 300px;
+    display: inline-block;
+    border: 1px solid black;
+    margin-top: 20px;
+    margin-left: 50px;
+    margin-bottom: 20px;
+    margin-right: 50px;
+}
+
+.search
+{
+    height: 30px;
+    width: 100px;
+    border: 1px solid black;
+    border-radius: 10px;
+    display: inline-block;
+}
+
+
+.userprofile
+{
+    display: inline-block;
+    width: 40%;
+    height:25px;
+    margin-left: 50px;
+}
+
+.col
+{
+    display: inline-block;
+    width: 200px;
+    padding: 0 20px 0 0;
+    vertical-align: top;
+    border: 2px solid black;
+    margin-left: 50px;
+    padding-bottom: 10px;
+}
+
+
+.userimg
+{
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 10px;
+    width: 180px;
+    height: 180px;
+}
+
+.userrow
+{
+    margin-left:8px;
+    width: 200px;
+    border: 1px solid black;
+}
+
+.usertext
+{
+    display: block;
+    padding: 5px 0 0 5px;
+}
+
+.userrepo
+{
+    display: inline-block;
+    width: 40%;
+    height:25px;
+    margin-left: 50px;
+}
+
+.userrepoframe
+{
+    overflow-x: hidden;
+    overflow-y: scroll;
+    width: 200px;
+    height: 350px;
+}
+
+.reporow
+{
+    width: 300px;
+    border: 1px solid black;
+}
+
