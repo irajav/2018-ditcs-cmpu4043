@@ -1,0 +1,38 @@
+html, body { position: relative }
+
+
+.container {
+  margin: 0;
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -0%) 
+}
+
+
+#digital {
+  text-align: center;
+}
+.button-row {
+  display: inline-block;
+}
+
+#split-container {
+  margin-top: 20px;
+}
+.title {
+  text-align: center;
+}
+.rows {
+  text-align: center;
+}
+
+.top {
+  border-top: solid 1px black;
+}
+.split-row {
+  border-bottom: solid 1px black;
+  border-right: solid 1px black;
+  border-left: solid 1px black;
+}
